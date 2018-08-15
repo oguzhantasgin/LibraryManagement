@@ -53,7 +53,7 @@ public class BookService {
 
             if (publisher != null) {
                 json.put("publisherId", publisher.getPublisherId());
-
+                json.put("publisherName",publisher.getPublisherName());
 
             }
 
@@ -95,13 +95,19 @@ public class BookService {
 
         Publisher publisher = null;
         Integer publisherId = null;
+        String publisherName = null;
 
         if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
             publisherId = jsonObject.getInt("publisherId");
         if (publisherId != null) {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
+            publisherName=publisher.getPublisherName();
         }
 
+
+
+
+        book.setPublisherName(publisherName);
         book.setPublisher(publisher);
         book.setAuthor(bookAuthor);
         book.setBookNumber(bookNumber);

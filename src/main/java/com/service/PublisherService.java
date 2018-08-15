@@ -3,24 +3,19 @@ package com.service;
 
 import com.dao.PublisherDAO;
 import com.model.Publisher;
-import com.util.DateJSONValueProcessor;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
-
-
 import org.springframework.transaction.annotation.Transactional;
-
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Exception.class)
-public class PublisherService {
+public class  PublisherService {
 
     @Autowired
     private PublisherDAO publisherDAO;
@@ -29,21 +24,7 @@ public class PublisherService {
 
         List<Publisher> publisherList = publisherDAO.loadPublishers();
         JsonConfig jsonConfig = new JsonConfig();
-        DateJSONValueProcessor dateProc = new DateJSONValueProcessor("dd/MM/yyyy");
-        jsonConfig.registerJsonValueProcessor(Date.class, dateProc);
         JSONArray jsonArray = JSONArray.fromObject(publisherList, jsonConfig);
-
-
-        for (int i = 0; i < jsonArray.size(); i++) {
-
-            Publisher publisher = publisherList.get(i);
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-            jsonObject.put("publisherName", publisher.getPublisherName());
-
-
-        }
-
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("data", jsonArray);
         jsonObject.put("success", true);

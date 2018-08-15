@@ -10,7 +10,7 @@ import java.util.Date;
 public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
     private int id;
 
@@ -26,12 +26,24 @@ public class Book implements Serializable {
     @Column(name = "book_year")
     private Date year;
 
+    @Column(name = "publisher_name")
+    private String publisherName;
+
     @ManyToOne
     @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
 
 
     //GETTER AND SETTERS
+
+
+    public String getPublisherName() {
+        return publisherName;
+    }
+
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
+    }
 
     public int getId() {
         return id;
@@ -57,7 +69,6 @@ public class Book implements Serializable {
         this.year = year;
     }
 
-
     public Long getBookNumber() {
         return bookNumber;
     }
@@ -73,7 +84,6 @@ public class Book implements Serializable {
     public void setBookName(String bookName) {
         this.bookName = bookName;
     }
-
 
     public Publisher getPublisher() {
         return publisher;

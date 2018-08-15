@@ -22,6 +22,7 @@ Ext.define(appName + '.view.book.BookGrid', {
         this.selType = 'rowmodel';
 
         this.columns = [{
+
             xtype   : 'rownumberer',
             align   : 'center'
         }, {
@@ -44,7 +45,16 @@ Ext.define(appName + '.view.book.BookGrid', {
             dataIndex: 'year',
             sortable: false,
             flex    : 1
-        },  {
+        },{
+
+          header : 'Publisher',
+          dataIndex: 'publisherName',
+          sortable: false,
+          flex : 1
+
+        },
+
+            {
             xtype       : 'actioncolumn',
             align       : 'center',
             sortable    : false,

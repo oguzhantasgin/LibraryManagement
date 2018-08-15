@@ -7,7 +7,7 @@ Ext.define(appName + '.store.Publishers', {
     proxy		: {
         type	: 'ajax',
         api		: {
-            read	: 'loadPublisher.ajax'
+            read	: 'loadPublishers.ajax'
         },
         reader	: {
             type	        : 'json',

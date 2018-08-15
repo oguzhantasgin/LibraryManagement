@@ -938,51 +938,57 @@
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="235" parent="229" name="book_year">
+    <column id="235" parent="229" name="publisher_name">
       <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_general_ci</Collation>
+    </column>
+    <column id="236" parent="229" name="book_year">
+      <Position>6</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="229" name="publisher_id">
-      <Position>6</Position>
+    <column id="237" parent="229" name="publisher_id">
+      <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="237" parent="229" name="publisher_id">
+    <index id="238" parent="229" name="publisher_id">
       <ColNames>publisher_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="238" parent="229" name="PRIMARY">
+    <key id="239" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>book_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="239" parent="229" name="book_table_ibfk_1">
+    <foreign-key id="240" parent="229" name="book_table_ibfk_1">
       <ColNames>publisher_id</ColNames>
       <RefSchemaName>library</RefSchemaName>
       <RefTableName>publishing_house_table</RefTableName>
       <RefColNames>publisher_id</RefColNames>
     </foreign-key>
-    <column id="240" parent="230" name="publisher_id">
+    <column id="241" parent="230" name="publisher_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="230" name="publisher_name">
+    <column id="242" parent="230" name="publisher_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="242" parent="230" name="publisher_address">
+    <column id="243" parent="230" name="publisher_address">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <key id="243" parent="230" name="PRIMARY">
+    <key id="244" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>publisher_id</ColNames>
       <Primary>1</Primary>

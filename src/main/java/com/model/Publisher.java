@@ -10,14 +10,14 @@ import java.util.List;
 public class Publisher implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "publisher_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "publisher_id")
     private int publisherId;
 
-    @Column(name = "publisher_name", nullable = false)
+    @Column(name = "publisher_name")
     private String publisherName;
 
-    @Column(name = "publisher_address", nullable = false)
+    @Column(name = "publisher_address")
     private String publisherAddress;
 
     @OneToMany(targetEntity = Book.class, mappedBy = "publisher",

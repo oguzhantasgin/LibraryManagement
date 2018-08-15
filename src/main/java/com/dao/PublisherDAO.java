@@ -51,7 +51,7 @@ public class PublisherDAO {
         return publisherList;
     }
 
-    public Publisher loadPublisherById(int publisherId) {
+   public Publisher loadPublisherById(int publisherId) {
         Session currentSession = getCurrentSession();
         CriteriaBuilder criteriaBuilder = currentSession.getCriteriaBuilder();
         CriteriaQuery<Publisher> criteriaQuery = criteriaBuilder.createQuery(Publisher.class);
