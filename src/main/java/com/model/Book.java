@@ -23,11 +23,13 @@ public class Book implements Serializable {
     @Column(name = "book_name")
     private String bookName;
 
-    @Column(name = "book_year")
-    private Date year;
 
     @Column(name = "publisher_name")
     private String publisherName;
+
+    @Column(name = "book_year")
+    private Date year;
+
 
     @ManyToOne
     @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")

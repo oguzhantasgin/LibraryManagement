@@ -42,7 +42,7 @@ public class MainController {
 
     @RequestMapping(value = "/loadBooks.ajax")
     public @ResponseBody
-    String loadBooks(HttpServletRequest request, HttpServletResponse response) {
+    String loadBooks( HttpServletRequest request, HttpServletResponse response) {
 
         JSONObject jsonObject = bookService.loadBooks();
         return jsonObject.toString();
