@@ -1,0 +1,81 @@
+.x-panel-header-title-default > .x-title-icon-wrap-default > .x-title-icon-default {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.x-panel-header-title-default-framed > .x-title-icon-wrap-default-framed > .x-title-icon-default-framed {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.x-panel-header-title-default {
+    color: #ffffff;
+}
+
+.x-panel-header-title-default-framed {
+    color: #ffffff;
+}
+
+.x-btn-icon-el-default-toolbar-small {
+    font-size: 18px;
+    color: #6c6b6b;
+}
+
+.x-btn-icon-el-default-small {
+    font-size: 18px;
+    color: white;
+}
+
+.x-panel-header-default {
+    border: none;
+}
+
+.x-panel-header-title-default > .x-title-text-default {
+    padding: 2px;
+}
+
+.x-column-header {
+    font-weight: bold;
+}
+
+.x-window-header-title-default > .x-title-icon-wrap-default > .x-title-icon-default {
+    color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+.x-window-header-title-default {
+    color: white;
+}
+
+
+/* ICONS */
+
+/*.x-action-col-cell img {
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    !*margin-right: 3px;*!
+}*/
+
+.x-action-col-icon {
+    color: #919191;
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+}
+
+.icon-delete:before {
+    font: 18px/1 FontAwesome;
+    color: #dd6550;
+    content: "\f056";
+}

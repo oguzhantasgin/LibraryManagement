@@ -1,0 +1,25 @@
+DROP DATABASE IF EXISTS Library;
+CREATE DATABASE IF NOT EXISTS Library;
+USE Library;
+
+CREATE TABLE IF NOT EXISTS publishing_house_table (
+  `publisher_id` INTEGER AUTO_INCREMENT NOT NULL,
+  `publisher_name` NVARCHAR(255) ,
+  `publisher_address` NVARCHAR(255) ,
+   PRIMARY KEY (`publisher_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS book_table (
+  `book_id` INTEGER AUTO_INCREMENT NOT NULL,
+  `book_number` INTEGER ,
+  `book_author` NVARCHAR(255) ,
+  `book_name` NVARCHAR(255) ,
+  `book_year`DATE NULL,
+  `publisher_id` INTEGER,
+
+  PRIMARY KEY (`book_id`),
+  FOREIGN KEY (publisher_id ) REFERENCES publishing_house_table(publisher_id)
+
+);
+
