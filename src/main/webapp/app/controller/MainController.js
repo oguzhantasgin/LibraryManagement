@@ -2,14 +2,20 @@ Ext.define(appName + '.controller.MainController', {
     extend: 'Ext.app.Controller',
     models: ['Book', 'Publisher'],
     stores: ['Books', 'Publishers'],
-    views: ['publisher.PublisherCombo', 'book.BookForm', 'book.BookGrid'],
+    views: ['publisher.PublisherCombo', 'book.BookForm', 'book.BookGrid', 'publisher.PublisherForm'],
     refs: [{
         ref: 'bookGrid',
         selector: 'bookgrid'
     }, {
         ref: 'bookForm',
         selector: 'bookform'
-    }],
+    },
+
+        {
+            ref: 'publisherForm',
+            selector: 'publisherform'
+
+        }],
 
     init: function () {
         this.control({
@@ -22,6 +28,9 @@ Ext.define(appName + '.controller.MainController', {
             },
             'bookform button[action=save]': {
                 click: this.saveOrUpdateBook
+            },
+            'bookform button[action=savePublisher]': {
+                click: this.saveOrUpdatePublisher
             }
         });
     },
@@ -78,6 +87,30 @@ Ext.define(appName + '.controller.MainController', {
                     });
                     grid.getStore().reload();
                     form.getForm().reset();
+                }
+            }
+        });
+    },
+
+
+    saveOrUpdatePublisher: function (btn) {
+
+        Ext.Ajax.request({
+            url: 'saveOrUpdatePublisher.ajax',
+            method: 'POST',
+            params: {
+                data: Ext.encode(form.getForm().getValues())
+            },
+            success: function (response, options) {
+                var res = Ext.decode(response.responseText);
+                if (res.success) {
+                    Ext.Msg.show({
+                        title: 'Success',
+                        msg: 'Publisher register done.',
+                        icon: Ext.Msg.INFO,
+                        buttons: Ext.Msg.OK
+                    });
+
                 }
             }
         });

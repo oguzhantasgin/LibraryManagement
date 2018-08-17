@@ -30,7 +30,6 @@ public class Book implements Serializable {
     @Column(name = "book_year")
     private Date year;
 
-
     @ManyToOne
     @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;

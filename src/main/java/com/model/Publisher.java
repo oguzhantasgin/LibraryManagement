@@ -20,7 +20,7 @@ public class Publisher implements Serializable {
     @Column(name = "publisher_address")
     private String publisherAddress;
 
-    @OneToMany(targetEntity = Book.class, mappedBy = "publisher_id",
+    @OneToMany(targetEntity = Book.class, mappedBy = "publisher",
             cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Book> books;
 
