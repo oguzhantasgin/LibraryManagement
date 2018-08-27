@@ -4,8 +4,6 @@ Ext.define(appName + '.view.panel.NorthPanel', {
     extend      : 'Ext.panel.Panel',
     alias       : 'widget.northpanel',
     initComponent: function() {
-
-
         this.callParent(arguments);
     }
 });

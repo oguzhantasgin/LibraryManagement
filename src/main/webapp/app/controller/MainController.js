@@ -9,11 +9,9 @@ Ext.define(appName + '.controller.MainController', {
     }, {
         ref: 'bookForm',
         selector: 'bookform'
-    },
-
-        {
-            ref: 'publisherForm',
-            selector: 'publisherform'
+    }, {
+        ref: 'publisherForm',
+        selector: 'publisherform'
 
         }],
 
@@ -29,7 +27,7 @@ Ext.define(appName + '.controller.MainController', {
             'bookform button[action=save]': {
                 click: this.saveOrUpdateBook
             },
-            'bookform button[action=savePublisher]': {
+            'publisherform button[action=savePublisher]': {
                 click: this.saveOrUpdatePublisher
             }
         });
@@ -91,10 +89,9 @@ Ext.define(appName + '.controller.MainController', {
             }
         });
     },
-
-
     saveOrUpdatePublisher: function (btn) {
 
+        var form = btn.up('form');
         Ext.Ajax.request({
             url: 'saveOrUpdatePublisher.ajax',
             method: 'POST',
@@ -110,6 +107,8 @@ Ext.define(appName + '.controller.MainController', {
                         icon: Ext.Msg.INFO,
                         buttons: Ext.Msg.OK
                     });
+                    grid.getStore().reload();
+                    form.getForm().reset();
 
                 }
             }

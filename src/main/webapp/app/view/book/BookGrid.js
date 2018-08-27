@@ -48,7 +48,7 @@ Ext.define(appName + '.view.book.BookGrid', {
         }, {
 
             header: 'Publisher',
-            dataIndex: 'publisherName',
+            dataIndex: 'bookPublisherName',
             sortable: false,
             flex: 1
 

@@ -33,16 +33,12 @@ public class BookService {
     @Autowired
     private PublisherDAO publisherDAO;
 
-
     public JSONObject loadBooks() {
         List<Book> bookList = bookDAO.loadBooks();
-
         JsonConfig jsonConfig = new JsonConfig();
         DateJSONValueProcessor dateProc = new DateJSONValueProcessor("dd/MM/yyyy");
         jsonConfig.registerJsonValueProcessor(Date.class, dateProc);
-
         JSONArray jsonArray = JSONArray.fromObject(bookList, jsonConfig);
-
 
         for (int i = 0; i < jsonArray.size(); i++) {
 
@@ -52,8 +48,8 @@ public class BookService {
             Publisher publisher = book.getPublisher();
 
             if (publisher != null) {
-                json.put("publisherId", publisher.getPublisherId());
-                json.put("publisherName",publisher.getPublisherName());
+                json.put("bookPublisherId", publisher.getPublisherId());
+                json.put("bookPublisherName",publisher.getPublisherName());
 
             }
 
@@ -67,7 +63,6 @@ public class BookService {
         return jsonObject;
 
     }
-
 
     @Transactional
     public JSONObject saveOrUpdateBook(JSONObject jsonObject) throws ParseException {
@@ -97,8 +92,8 @@ public class BookService {
         Integer publisherId = null;
         String publisherName = null;
 
-        if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
-            publisherId = jsonObject.getInt("publisherId");
+        if (jsonObject.has("bookPublisherId") && jsonObject.get("bookPublisherId") != null && !jsonObject.getString("bookPublisherId").equals(""))
+            publisherId = jsonObject.getInt("bookPublisherId");
         if (publisherId != null) {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
             publisherName=publisher.getPublisherName();
@@ -123,7 +118,6 @@ public class BookService {
 
 
     }
-
 
     @Transactional
     public JSONObject deleteBook(Long bookId) {

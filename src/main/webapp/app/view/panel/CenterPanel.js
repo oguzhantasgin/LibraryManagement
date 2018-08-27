@@ -10,14 +10,9 @@ Ext.define(appName + '.view.panel.CenterPanel', {
     initComponent: function () {
 
 
-        this.form = Ext.create(appname + '.view.publisher.PublisherForm', {
-
-
+        this.formP = Ext.create(appName + '.view.publisher.PublisherForm', {
             flex: 1
-
         });
-
-
         this.form = Ext.create(appName + '.view.book.BookForm', {
             flex: 1
         });
@@ -25,7 +20,7 @@ Ext.define(appName + '.view.panel.CenterPanel', {
             flex: 2
         });
 
-        this.items = [this.form, this.panel];
+        this.items = [this.form, this.panel,this.formP];
 
         this.callParent(arguments);
     }

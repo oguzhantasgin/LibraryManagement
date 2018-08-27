@@ -33,7 +33,6 @@ public class  PublisherService {
 
     }
 
-
     @Transactional
     public JSONObject saveOrUpdatePublisher(JSONObject jsonObject) throws ParseException {
 
@@ -64,7 +63,6 @@ public class  PublisherService {
         return jsonReturn;
 
     }
-
 
     @Transactional
     public JSONObject deletePublisher(Long publisherId) throws ParseException {

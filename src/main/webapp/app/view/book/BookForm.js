@@ -15,27 +15,22 @@ Ext.define(appName + '.view.book.BookForm', {
         anchor: '%95',
         msgTarget: 'under',
         padding: '10 0 0 15'
-
-
     },
 
     initComponent: function () {
         this.items = [
-            {
 
+            {
                 xtype: 'hidden',
                 name: 'bookId'
             },
             {
                 fieldLabel: 'Book Name',
                 name: 'name'
-
             },
             {
                 fieldLabel: 'Author',
                 name: 'author'
-
-
             },
             {
                 fieldLabel: 'Book Number',
@@ -45,7 +40,6 @@ Ext.define(appName + '.view.book.BookForm', {
                 allowDecimals: false,
                 minValue: 1
             },
-
             {
                 fieldLabel: 'Book Date',
                 name: 'year',
@@ -55,12 +49,12 @@ Ext.define(appName + '.view.book.BookForm', {
             },
             {
                 fieldLabel: 'Publisher',
-                name: 'publisherId',
+                name: 'bookPublisherName',
                 xtype: 'publishercombo',
-                allowblank: true
+                allowblank: false
             }
 
-        ];
+            ];
 
 
         this.btnSave = Ext.create('Ext.Button', {
@@ -69,8 +63,8 @@ Ext.define(appName + '.view.book.BookForm', {
             formBind: true,
             action: 'save'
         });
-        this.buttons = [this.btnSave];
 
+        this.buttons = [this.btnSave];
         this.callParent(arguments);
 
     }
