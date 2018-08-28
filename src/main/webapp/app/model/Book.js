@@ -7,9 +7,8 @@ Ext.define(appName + '.model.Book', {
         {name: 'number', type: 'int'},
         {name: 'author', type: 'string'},
         {name: 'name', type: 'string'},
-        {name: 'bookPublisherName', type: 'string'},
         {name: 'year', type: 'string'},
-        {name: 'bookPublisherId', type: 'int' , allowNull: false }
+        {name: 'publisherId', type: 'int' , allowNull: false }
 
     ]
 });

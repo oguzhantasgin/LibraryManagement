@@ -90,7 +90,7 @@ Ext.define(appName + '.controller.MainController', {
         });
     },
     saveOrUpdatePublisher: function (btn) {
-
+        var grid = this.getBookGrid();
         var form = btn.up('form');
         Ext.Ajax.request({
             url: 'saveOrUpdatePublisher.ajax',

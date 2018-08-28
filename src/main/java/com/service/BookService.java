@@ -34,6 +34,7 @@ public class BookService {
     private PublisherDAO publisherDAO;
 
     public JSONObject loadBooks() {
+
         List<Book> bookList = bookDAO.loadBooks();
         JsonConfig jsonConfig = new JsonConfig();
         DateJSONValueProcessor dateProc = new DateJSONValueProcessor("dd/MM/yyyy");
@@ -48,11 +49,9 @@ public class BookService {
             Publisher publisher = book.getPublisher();
 
             if (publisher != null) {
-                json.put("bookPublisherId", publisher.getPublisherId());
-                json.put("bookPublisherName",publisher.getPublisherName());
-
+                json.put("publisherId", publisher.getPublisherId());
+                json.put("publisherName", publisher.getPublisherName());
             }
-
 
         }
 
@@ -67,48 +66,56 @@ public class BookService {
     @Transactional
     public JSONObject saveOrUpdateBook(JSONObject jsonObject) throws ParseException {
 
-        Book book;
-        Long bookId = null;
+        Book book = null;
+        Integer bookId = null;
 
 
         if (jsonObject.has("bookId") && jsonObject.get("bookId") != null && !jsonObject.getString("bookId").equals(""))
-            bookId = jsonObject.getLong("bookId");
+            bookId = jsonObject.getInt("bookId");
+
+
         if (bookId != null) {
             book = (Book) bookDAO.loadObject(Book.class, bookId);
-        } else {
+        }
+        else {
             book = new Book();
         }
 
-        Long bookNumber = jsonObject.getLong("number");
+
+        int bookNumber = jsonObject.getInt("number");
         String bookName = jsonObject.getString("name");
         String bookAuthor = jsonObject.getString("author");
         String strBookYear = jsonObject.getString("year");
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
         Date bookDate = sdf.parse(strBookYear);
 
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+
         Publisher publisher = null;
         Integer publisherId = null;
-        String publisherName = null;
 
-        if (jsonObject.has("bookPublisherId") && jsonObject.get("bookPublisherId") != null && !jsonObject.getString("bookPublisherId").equals(""))
-            publisherId = jsonObject.getInt("bookPublisherId");
+
+        if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
+            publisherId = jsonObject.getInt("publisherId");
+
+
         if (publisherId != null) {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
-            publisherName=publisher.getPublisherName();
+
         }
 
 
 
 
-        book.setPublisherName(publisherName);
-        book.setPublisher(publisher);
         book.setAuthor(bookAuthor);
         book.setBookNumber(bookNumber);
         book.setYear(bookDate);
         book.setBookName(bookName);
-
+        book.setPublisher(publisher);
 
         boolean success = bookDAO.saveOrUpdateObject(book);
 
@@ -120,7 +127,7 @@ public class BookService {
     }
 
     @Transactional
-    public JSONObject deleteBook(Long bookId) {
+    public JSONObject deleteBook(Integer bookId) {
         Book book = (Book) bookDAO.loadObject(Book.class, bookId);
         boolean success = bookDAO.removeObject(book);
 

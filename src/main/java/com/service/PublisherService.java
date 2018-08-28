@@ -36,12 +36,13 @@ public class  PublisherService {
     @Transactional
     public JSONObject saveOrUpdatePublisher(JSONObject jsonObject) throws ParseException {
 
-        Publisher publisher;
+        Publisher publisher = null;
         Integer publisher_id = null;
 
 
         if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
             publisher_id = jsonObject.getInt("publisherId");
+
         if (publisher_id != null) {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisher_id);
         } else {
@@ -65,11 +66,10 @@ public class  PublisherService {
     }
 
     @Transactional
-    public JSONObject deletePublisher(Long publisherId) throws ParseException {
+    public JSONObject deletePublisher(Integer publisherId) throws ParseException {
 
         Publisher publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
         boolean success = publisherDAO.removeObject(publisher);
-
         JSONObject jsonReturn = new JSONObject();
         jsonReturn.put("success", success);
         return jsonReturn;

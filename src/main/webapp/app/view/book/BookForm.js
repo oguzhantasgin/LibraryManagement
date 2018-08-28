@@ -49,7 +49,7 @@ Ext.define(appName + '.view.book.BookForm', {
             },
             {
                 fieldLabel: 'Publisher',
-                name: 'bookPublisherName',
+                name: 'publisherId',
                 xtype: 'publishercombo',
                 allowblank: false
             }

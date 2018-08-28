@@ -15,7 +15,7 @@ public class Book implements Serializable {
     private int id;
 
     @Column(name = "book_number ")
-    private Long bookNumber;
+    private int bookNumber;
 
     @Column(name = "book_author")
     private String author;
@@ -23,11 +23,7 @@ public class Book implements Serializable {
     @Column(name = "book_name")
     private String bookName;
 
-
-    @Column(name = "publisher_name")
-    private String publisherName;
-
-    @Column(name = "book_year")
+        @Column(name = "book_year")
     private Date year;
 
     @ManyToOne
@@ -38,13 +34,7 @@ public class Book implements Serializable {
     //GETTER AND SETTERS
 
 
-    public String getPublisherName() {
-        return publisherName;
-    }
 
-    public void setPublisherName(String publisherName) {
-        this.publisherName = publisherName;
-    }
 
     public int getId() {
         return id;
@@ -70,11 +60,11 @@ public class Book implements Serializable {
         this.year = year;
     }
 
-    public Long getBookNumber() {
+    public int getBookNumber() {
         return bookNumber;
     }
 
-    public void setBookNumber(Long bookNumber) {
+    public void setBookNumber(int bookNumber) {
         this.bookNumber = bookNumber;
     }
 

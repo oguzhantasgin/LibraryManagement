@@ -14,16 +14,15 @@ public class Publisher implements Serializable {
     @Column(name = "publisher_id")
     private int publisherId;
 
-    @Column(name = "publisher_name")
+    @Column(name = "publisher_name", unique = true)
     private String publisherName;
 
     @Column(name = "publisher_address")
     private String publisherAddress;
 
-    @OneToMany(targetEntity = Book.class, mappedBy = "publisher",
+    @OneToMany(targetEntity = Book.class, mappedBy = "publisher" ,
             cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Book> books;
-
 
 
     //GETTERS AND SETTERS
