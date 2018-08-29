@@ -42,7 +42,7 @@ public class MainController {
 
     @RequestMapping(value = "/loadBooks.ajax")
     public @ResponseBody
-    String loadBooks( HttpServletRequest request, HttpServletResponse response) {
+    String loadBooks(HttpServletRequest request, HttpServletResponse response) {
 
         JSONObject jsonObject = bookService.loadBooks();
         return jsonObject.toString();
@@ -97,7 +97,7 @@ public class MainController {
 
     @RequestMapping(value = "/deletePublisher.ajax")
     public @ResponseBody
-    String deletePublisher(@RequestParam Integer publisherId, HttpServletRequest request, HttpServletResponse response) throws ParseException {
+    String deletePublisher(@RequestParam Long publisherId, HttpServletRequest request, HttpServletResponse response) throws ParseException {
 
         JSONObject jsonObject = publisherService.deletePublisher(publisherId);
         return jsonObject.toString();

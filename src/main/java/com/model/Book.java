@@ -12,7 +12,7 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Long id;
+    private Long bookId;
 
     @Column(name = "book_number ")
     private Long bookNumber;
@@ -23,10 +23,10 @@ public class Book implements Serializable {
     @Column(name = "book_name")
     private String bookName;
 
-        @Column(name = "book_year")
+    @Column(name = "book_year")
     private Date year;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
 
@@ -36,12 +36,12 @@ public class Book implements Serializable {
 
 
 
-    public Long getId() {
-        return id;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
     public String getAuthor() {

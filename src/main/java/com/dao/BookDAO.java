@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.util.List;
@@ -47,6 +48,25 @@ public class BookDAO {
         Query<Book> query = currentSession.createQuery(criteriaQuery);
         List<Book> bookList = query.getResultList();
         return bookList;
+    }
+
+    public Book loadBookById(Long bookId){
+
+        Session currentSession = getCurrentSession();
+        CriteriaBuilder criteriaBuilder = currentSession.getCriteriaBuilder();
+        CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
+        Root<Book> root = criteriaQuery.from(Book.class);
+
+        Predicate predicateURL = criteriaBuilder.equal(root.get("bookId"), bookId);
+        criteriaQuery.select(root).where(predicateURL);
+        criteriaQuery.distinct(true);
+
+        Query<Book> query = currentSession.createQuery(criteriaQuery);
+        Book book = query.getSingleResult();
+        return book;
+
+
+
     }
 
 

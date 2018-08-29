@@ -37,10 +37,9 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
         if (ex == null) {
             long startTime = Long.parseLong(request.getAttribute("startTime").toString());
             long endTime = Long.parseLong(request.getAttribute("endTime").toString());
+            long elapsedTime = endTime - startTime;
 
-            long sure = endTime - startTime;
-
-            System.out.println(method.getName() + " isimli metodun yurutumu " + sure + " ms. surdu");
+            System.out.println(method.getName() + " executed in " + elapsedTime + " milliseconds.");
         }
 
         super.afterCompletion(request, response, handler, ex);

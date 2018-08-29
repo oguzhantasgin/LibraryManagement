@@ -51,20 +51,18 @@ public class PublisherDAO {
         return publisherList;
     }
 
-   public Publisher loadPublisherById(int publisherId) {
+    public Publisher loadPublisherById(Long publisherId) {
+
         Session currentSession = getCurrentSession();
         CriteriaBuilder criteriaBuilder = currentSession.getCriteriaBuilder();
         CriteriaQuery<Publisher> criteriaQuery = criteriaBuilder.createQuery(Publisher.class);
         Root<Publisher> root = criteriaQuery.from(Publisher.class);
-
-        Predicate predicateURL = criteriaBuilder.equal(root.get("publisher_id"), publisherId);
+        Predicate predicateURL = criteriaBuilder.equal(root.get("publisherId"), publisherId);
         criteriaQuery.select(root).where(predicateURL);
         criteriaQuery.distinct(true);
-
         Query<Publisher> query = currentSession.createQuery(criteriaQuery);
         Publisher publisher = query.getSingleResult();
         return publisher;
-
 
     }
 

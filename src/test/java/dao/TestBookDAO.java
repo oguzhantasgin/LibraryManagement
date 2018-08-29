@@ -1,12 +1,17 @@
-package com.dao;
+
+
+package dao;
 
 import com.config.AppConfig;
 import com.config.WebAppInitializer;
 import com.config.WebConfig;
+import com.dao.BookDAO;
+import com.dao.PublisherDAO;
 import com.model.Book;
 
 import com.model.Publisher;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,30 +19,28 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import sun.java2d.pipe.SpanShapeRenderer;
 
-import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {WebAppInitializer.class, AppConfig.class, WebConfig.class})
-@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration(classes = {AppConfig.class, WebConfig.class, WebAppInitializer.class})
 @Transactional
+@WebAppConfiguration
 public class TestBookDAO {
 
     @Autowired
     private BookDAO bookDAO;
 
-
     @Autowired
     private PublisherDAO publisherDAO;
 
     @Test
-
-    public void testLoadPublishers() {
+    public void testLoadBooks() {
         List<Book> bookList = bookDAO.loadBooks();
         Assert.assertTrue(bookList.size() > 0);
 
@@ -45,30 +48,30 @@ public class TestBookDAO {
 
     @Test
     @Transactional
-
     public void testAddBook() throws Exception {
 
 
-        //Set test publisher
+        //Set test publisher and variables
+
 
         Publisher publisher = new Publisher();
         publisher.setPublisherName("Oguzhan");
         publisher.setPublisherAddress("Taşgın");
 
+        publisherDAO.saveOrUpdateObject(publisher);
 
-        //Set test variables
 
         Book book = new Book();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date testBookDate = new Date();
         dateFormat.format(testBookDate);
-        Long bookNumber = 23L;
+        Long testBookNumber = 23L;
 
 
         book.setPublisher(publisher);
         book.setBookName("BOOK NAME");
         book.setAuthor("AUTHOR");
-        book.setBookNumber(bookNumber);
+        book.setBookNumber(testBookNumber);
         book.setYear(testBookDate);
 
 
@@ -76,12 +79,28 @@ public class TestBookDAO {
 
         bookDAO.saveOrUpdateObject(book);
         List<Book> books = bookDAO.loadBooks();
-        List<Publisher> publishers = publisherDAO.loadPublishers();
         Assert.assertEquals(1, books.size());
-        Assert.assertEquals(1, publishers.size());
 
 
     }
 
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void testDeleteBook() throws Exception {
+
+        Book book = (Book) bookDAO.loadObject(Book.class, 1L);
+        bookDAO.removeObject(book);
+        Book testBook = (Book) bookDAO.loadObject(Book.class, 1L);
+        Assert.assertNull(testBook);
+
+    }
+
+
+    @Test
+    public void testLoadBookById() throws Exception {
+        Book book = bookDAO.loadBookById(1L);
+        Assert.assertNotNull(book);
+    }
 
 }

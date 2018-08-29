@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Exception.class)
+@Transactional(propagation = Propagation.REQUIRED,  rollbackFor = Exception.class)
 public class BookService {
 
     @Autowired
@@ -66,18 +66,25 @@ public class BookService {
     @Transactional
     public JSONObject saveOrUpdateBook(JSONObject jsonObject) throws ParseException {
 
-        Book book = null;
-        Integer bookId = null;
 
+        //Clear hype
+
+        Book book = null;
+        Long bookId = null;
+
+
+
+        // If JSON objec has bookId value, then retrieve it
 
         if (jsonObject.has("bookId") && jsonObject.get("bookId") != null && !jsonObject.getString("bookId").equals(""))
-            bookId = jsonObject.getInt("bookId");
+            bookId = jsonObject.getLong("bookId");
 
+
+        //Value of a bookId tells us what will do, update or insert ?
 
         if (bookId != null) {
             book = (Book) bookDAO.loadObject(Book.class, bookId);
-        }
-        else {
+        } else {
             book = new Book();
         }
 
@@ -85,13 +92,9 @@ public class BookService {
         Long bookNumber = jsonObject.getLong("number");
         String bookName = jsonObject.getString("name");
         String bookAuthor = jsonObject.getString("author");
-        String strBookYear = jsonObject.getString("year");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-        Date bookDate = sdf.parse(strBookYear);
+        Date bookDate = dateConverter(jsonObject.getString("year"));
 
 
-
-//////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -107,8 +110,6 @@ public class BookService {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
 
         }
-
-
 
 
         book.setAuthor(bookAuthor);
@@ -130,7 +131,6 @@ public class BookService {
     public JSONObject deleteBook(Long bookId) {
         Book book = (Book) bookDAO.loadObject(Book.class, bookId);
         boolean success = bookDAO.removeObject(book);
-
         JSONObject jsonReturn = new JSONObject();
         jsonReturn.put("success", success);
         return jsonReturn;
@@ -138,5 +138,8 @@ public class BookService {
 
     }
 
-
+    public Date dateConverter(String stringDate) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+        return sdf.parse(stringDate);
+    }
 }

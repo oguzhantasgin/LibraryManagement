@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.text.ParseException;
 import java.util.List;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Exception.class)
-public class  PublisherService {
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+public class PublisherService {
 
     @Autowired
     private PublisherDAO publisherDAO;
@@ -37,11 +38,11 @@ public class  PublisherService {
     public JSONObject saveOrUpdatePublisher(JSONObject jsonObject) throws ParseException {
 
         Publisher publisher = null;
-        Integer publisher_id = null;
+        Long publisher_id = null;
 
 
         if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
-            publisher_id = jsonObject.getInt("publisherId");
+            publisher_id = jsonObject.getLong("publisherId");
 
         if (publisher_id != null) {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisher_id);
@@ -66,7 +67,7 @@ public class  PublisherService {
     }
 
     @Transactional
-    public JSONObject deletePublisher(Integer publisherId) throws ParseException {
+    public JSONObject deletePublisher(Long publisherId) throws ParseException {
 
         Publisher publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
         boolean success = publisherDAO.removeObject(publisher);
