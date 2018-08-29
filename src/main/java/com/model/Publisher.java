@@ -12,7 +12,7 @@ public class Publisher implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id")
-    private int publisherId;
+    private Long publisherId;
 
     @Column(name = "publisher_name", unique = true)
     private String publisherName;
@@ -28,11 +28,11 @@ public class Publisher implements Serializable {
     //GETTERS AND SETTERS
 
 
-    public int getPublisherId() {
+    public Long getPublisherId() {
         return publisherId;
     }
 
-    public void setPublisherId(int publisherId) {
+    public void setPublisherId(Long publisherId) {
         this.publisherId = publisherId;
     }
 

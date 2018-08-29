@@ -12,10 +12,10 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private int id;
+    private Long id;
 
     @Column(name = "book_number ")
-    private int bookNumber;
+    private Long bookNumber;
 
     @Column(name = "book_author")
     private String author;
@@ -36,11 +36,11 @@ public class Book implements Serializable {
 
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class Book implements Serializable {
         this.year = year;
     }
 
-    public int getBookNumber() {
+    public Long getBookNumber() {
         return bookNumber;
     }
 
-    public void setBookNumber(int bookNumber) {
+    public void setBookNumber(Long bookNumber) {
         this.bookNumber = bookNumber;
     }
 

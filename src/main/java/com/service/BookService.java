@@ -82,7 +82,7 @@ public class BookService {
         }
 
 
-        int bookNumber = jsonObject.getInt("number");
+        Long bookNumber = jsonObject.getLong("number");
         String bookName = jsonObject.getString("name");
         String bookAuthor = jsonObject.getString("author");
         String strBookYear = jsonObject.getString("year");
@@ -127,7 +127,7 @@ public class BookService {
     }
 
     @Transactional
-    public JSONObject deleteBook(Integer bookId) {
+    public JSONObject deleteBook(Long bookId) {
         Book book = (Book) bookDAO.loadObject(Book.class, bookId);
         boolean success = bookDAO.removeObject(book);
 

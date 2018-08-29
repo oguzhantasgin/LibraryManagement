@@ -16,7 +16,7 @@ import static org.hibernate.cfg.AvailableSettings.*;
 @PropertySource("classpath:hibernate.properties")
 @EnableTransactionManagement
 @Configuration
-@ComponentScan(basePackages = "com")
+@ComponentScan(basePackages = {"com"})
 public class AppConfig {
 
     @Autowired
