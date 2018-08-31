@@ -26,15 +26,15 @@ Ext.define(appName + '.view.book.BookForm', {
             },
             {
                 fieldLabel: 'Book Name',
-                name: 'name'
+                name: 'bookName'
             },
             {
                 fieldLabel: 'Author',
-                name: 'author'
+                name: 'bookAuthor'
             },
             {
                 fieldLabel: 'Book Number',
-                name: 'number',
+                name: 'bookNumber',
                 hideTrigger: true,
                 xtype: 'numberfield',
                 allowDecimals: false,
@@ -42,7 +42,7 @@ Ext.define(appName + '.view.book.BookForm', {
             },
             {
                 fieldLabel: 'Book Date',
-                name: 'year',
+                name: 'bookYear',
                 xtype: 'datefield',
                 format: 'd/m/Y'
 

@@ -27,38 +27,38 @@ Ext.define(appName + '.view.book.BookGrid', {
             align: 'center'
         }, {
             header: 'Book Name',
-            dataIndex: 'name',
+            dataIndex: 'bookName',
             sortable: false,
             flex: 1
         }, {
             header: 'Author',
-            dataIndex: 'author',
+            dataIndex: 'bookAuthor',
             sortable: false,
             flex: 1
         }, {
             header: 'Book Number',
-            dataIndex: 'number',
+            dataIndex: 'bookNumber',
             sortable: false,
             flex: 1
         }, {
             header: 'Book Date',
-            dataIndex: 'year',
+            dataIndex: 'bookYear',
             sortable: false,
             flex: 1
         }, {
-                xtype: 'actioncolumn',
-                align: 'center',
-                sortable: false,
-                menuDisabled: true,
-                items: [{
-                    iconCls: 'icon-delete',
-                    tooltip: 'Delete',
-                    handler: function (grid, rowIndex, colIndex, node, e, record, rowNode) {
-                        var action = 'delete';
-                        this.fireEvent('itemclick', this, action, grid, rowIndex, colIndex, record, node);
-                    }
-                }]
-            }];
+            xtype: 'actioncolumn',
+            align: 'center',
+            sortable: false,
+            menuDisabled: true,
+            items: [{
+                iconCls: 'icon-delete',
+                tooltip: 'Delete',
+                handler: function (grid, rowIndex, colIndex, node, e, record, rowNode) {
+                    var action = 'delete';
+                    this.fireEvent('itemclick', this, action, grid, rowIndex, colIndex, record, node);
+                }
+            }]
+        }];
 
         this.callParent(arguments);
     }

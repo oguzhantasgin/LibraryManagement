@@ -4,10 +4,10 @@ Ext.define(appName + '.model.Book', {
     idProperty: 'bookId',
     fields: [
         {name: 'bookId', type: 'int'},
-        {name: 'number', type: 'int'},
-        {name: 'author', type: 'string'},
-        {name: 'name', type: 'string'},
-        {name: 'year', type: 'string'},
+        {name: 'bookNumber', type: 'int'},
+        {name: 'bookAuthor', type: 'string'},
+        {name: 'bookName', type: 'string'},
+        {name: 'bookYear', type: 'string'},
         {name: 'publisherId', type: 'int' , allowNull: false }
 
     ]

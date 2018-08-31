@@ -72,13 +72,10 @@ public class BookService {
         Book book = null;
         Long bookId = null;
 
-
-
         // If JSON objec has bookId value, then retrieve it
 
         if (jsonObject.has("bookId") && jsonObject.get("bookId") != null && !jsonObject.getString("bookId").equals(""))
             bookId = jsonObject.getLong("bookId");
-
 
         //Value of a bookId tells us what will do, update or insert ?
 
@@ -89,14 +86,10 @@ public class BookService {
         }
 
 
-        Long bookNumber = jsonObject.getLong("number");
-        String bookName = jsonObject.getString("name");
-        String bookAuthor = jsonObject.getString("author");
-        Date bookDate = dateConverter(jsonObject.getString("year"));
-
-
-
-
+        Long bookNumber = jsonObject.getLong("bookNumber");
+        String bookName = jsonObject.getString("bookName");
+        String bookAuthor = jsonObject.getString("bookAuthor");
+        Date bookDate = dateConverter(jsonObject.getString("bookYear"));
 
         Publisher publisher = null;
         Integer publisherId = null;

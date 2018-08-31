@@ -24,8 +24,7 @@ public class PublisherService {
     public JSONObject loadPublishers() {
 
         List<Publisher> publisherList = publisherDAO.loadPublishers();
-        JsonConfig jsonConfig = new JsonConfig();
-        JSONArray jsonArray = JSONArray.fromObject(publisherList, jsonConfig);
+        JSONArray jsonArray = JSONArray.fromObject(publisherList);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("data", jsonArray);
         jsonObject.put("success", true);

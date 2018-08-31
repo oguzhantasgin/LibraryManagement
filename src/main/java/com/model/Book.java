@@ -2,6 +2,7 @@ package com.model;
 
 import javax.persistence.*;
 
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,6 +14,12 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
     private Long bookId;
+
+
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
 
     @Column(name = "book_number ")
     private Long bookNumber;
@@ -26,14 +33,8 @@ public class Book implements Serializable {
     @Column(name = "book_year")
     private Date year;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
-    private Publisher publisher;
-
 
     //GETTER AND SETTERS
-
-
 
 
     public Long getBookId() {
