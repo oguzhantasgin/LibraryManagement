@@ -33,8 +33,7 @@ public class TestBookService {
     @Autowired
     private BookDAO bookDAO;
 
-    @Autowired
-    private PublisherDAO publisherDAO;
+
 
 
     @Test
