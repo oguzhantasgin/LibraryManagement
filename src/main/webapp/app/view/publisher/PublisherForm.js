@@ -32,6 +32,14 @@ Ext.define(appName + '.view.publisher.PublisherForm', {
                 fieldLabel: 'Address',
                 xtype : 'textareafield',
                 name: 'publisherAddress'
+            },
+            {
+                fieldLabel: 'Phone Number',
+                name: 'publisherPhone',
+                hideTrigger: true,
+                xtype: 'numberfield',
+                allowDecimals: false
+
             }
             ];
 

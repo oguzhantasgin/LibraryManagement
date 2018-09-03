@@ -68,8 +68,7 @@ public class MainController {
         JSONObject jsonObject = bookService.deleteBook(bookId);
         return jsonObject.toString();
 
-
-    }
+        }
 
 
     //PUBLISHER CONTROLLERS

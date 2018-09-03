@@ -19,6 +19,12 @@ public class Publisher implements Serializable {
 
     @Column(name = "publisher_address")
     private String publisherAddress;
+
+
+    @Column(name = "publisher_phone")
+    private Long publisherPhone;
+
+
 /*
     @OneToMany(targetEntity = Book.class,mappedBy = "publisher",
             cascade = CascadeType.ALL)
@@ -50,6 +56,14 @@ public class Publisher implements Serializable {
 
     public void setPublisherAddress(String publisherAddress) {
         this.publisherAddress = publisherAddress;
+    }
+
+    public Long getPublisherPhone() {
+        return publisherPhone;
+    }
+
+    public void setPublisherPhone(Long publisherPhone) {
+        this.publisherPhone = publisherPhone;
     }
 
    /* public List<Book> getBooks() {

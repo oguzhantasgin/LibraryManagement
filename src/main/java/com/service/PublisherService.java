@@ -51,10 +51,11 @@ public class PublisherService {
 
         String publisherName = jsonObject.getString("publisherName");
         String publisherAddress = jsonObject.getString("publisherAddress");
-
+        Long publisherPhone = jsonObject.getLong(("publisherPhone"));
 
         publisher.setPublisherName(publisherName);
         publisher.setPublisherAddress(publisherAddress);
+        publisher.setPublisherPhone(publisherPhone);
 
 
         boolean success = publisherDAO.saveOrUpdateObject(publisher);

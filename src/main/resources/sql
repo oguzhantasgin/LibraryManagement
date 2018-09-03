@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS publishing_house_table (
   `publisher_id` INTEGER AUTO_INCREMENT NOT NULL,
   `publisher_name` NVARCHAR(255) ,
   `publisher_address` NVARCHAR(255) ,
-   PRIMARY KEY (`publisher_id`)
+  `publisher_phone` INTEGER,
+  PRIMARY KEY (`publisher_id`)
 );
 
 

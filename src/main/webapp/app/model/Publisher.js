@@ -5,6 +5,7 @@ Ext.define(appName + '.model.Publisher', {
         {name: 'publisherId', type: 'int'},
         {name: 'publisherName', type: 'string'},
         {name: 'publisherAddress', type: 'string'},
+        {name: 'publisherPhone', type: 'int'}
 
 
     ]
