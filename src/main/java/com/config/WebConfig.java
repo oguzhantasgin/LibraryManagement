@@ -31,8 +31,6 @@ import java.util.Locale;
 @ComponentScan(basePackages = {"com"})
 public class WebConfig implements WebMvcConfigurer {
 
-
-
     //Used methods
 
     @Override
