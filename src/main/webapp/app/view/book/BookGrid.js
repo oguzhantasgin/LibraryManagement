@@ -2,7 +2,7 @@ Ext.define(appName + '.view.book.BookGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.bookgrid',
     title: 'Book List',
-    glyph: '',
+    glyph: 'xE02F@Material Icons',
     store: 'Books',
     forceFit: true,
     border: true,

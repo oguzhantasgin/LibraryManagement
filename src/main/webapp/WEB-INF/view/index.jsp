@@ -7,28 +7,22 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Library</title>
+    <title>Library Management</title>
 
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/ext-6.2.0/build/classic/theme-triton/resources/theme-triton-all-debug.css">
-    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/extjs/build/classic/theme-classic/resources/theme-classic-all-debug.css">--%>
-    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/extjs/build/classic/theme-crisp/resources/theme-crisp-all-debug.css">--%>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/material-icons.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/app.css">
-
-
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/ext-6.2.0/build/classic/theme-triton/theme-triton-debug.js"></script>
-    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/extjs/build/classic/theme-classic/theme-classic-debug.js"></script>--%>
-    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/extjs/build/classic/theme-crisp/theme-crisp-debug.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/ext-6.2.0/build/classic/locale/locale-tr-debug.js"></script>
-
     <script type="text/javascript" src="${pageContext.request.contextPath}/ext-6.2.0/build/ext-all.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/app/constants.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/app/overrides.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
+
 </head>
 <body>
 

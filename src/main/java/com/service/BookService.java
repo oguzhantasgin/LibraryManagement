@@ -98,10 +98,8 @@ public class BookService {
         if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
             publisherId = jsonObject.getLong("publisherId");
 
-
         if (publisherId != null) {
             publisher = (Publisher) publisherDAO.loadObject(Publisher.class, publisherId);
-
         }
 
 
