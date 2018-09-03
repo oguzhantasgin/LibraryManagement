@@ -3,6 +3,7 @@ Ext.define(appName + '.view.publisher.PublisherForm', {
     id: 'myformpublisher',
     alias: 'widget.publisherform',
     title: ' Publisher Management',
+    glyph: 'xE7EE@Material Icons',
     autoScroll: true,
     monitorValid: true,
     defaultType: 'textfield',
@@ -29,6 +30,7 @@ Ext.define(appName + '.view.publisher.PublisherForm', {
             },
             {
                 fieldLabel: 'Address',
+                xtype : 'textareafield',
                 name: 'publisherAddress'
             }
             ];

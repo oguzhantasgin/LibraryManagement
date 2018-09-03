@@ -1,5 +1,5 @@
 Ext.define(appName + '.view.panel.NorthPanel', {
-    title       : 'Library',
+    title       : 'Library Management',
     // glyph       : '',
     extend      : 'Ext.panel.Panel',
     alias       : 'widget.northpanel',

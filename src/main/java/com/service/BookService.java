@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED,  rollbackFor = Exception.class)
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class BookService {
 
     @Autowired
@@ -72,7 +72,7 @@ public class BookService {
         Book book = null;
         Long bookId = null;
 
-        // If JSON objec has bookId value, then retrieve it
+        // If JSON object has bookId value, then retrieve it
 
         if (jsonObject.has("bookId") && jsonObject.get("bookId") != null && !jsonObject.getString("bookId").equals(""))
             bookId = jsonObject.getLong("bookId");
@@ -92,11 +92,11 @@ public class BookService {
         Date bookDate = dateConverter(jsonObject.getString("bookYear"));
 
         Publisher publisher = null;
-        Integer publisherId = null;
+        Long publisherId = null;
 
 
         if (jsonObject.has("publisherId") && jsonObject.get("publisherId") != null && !jsonObject.getString("publisherId").equals(""))
-            publisherId = jsonObject.getInt("publisherId");
+            publisherId = jsonObject.getLong("publisherId");
 
 
         if (publisherId != null) {
@@ -122,12 +122,12 @@ public class BookService {
 
     @Transactional
     public JSONObject deleteBook(Long bookId) {
+
         Book book = (Book) bookDAO.loadObject(Book.class, bookId);
         boolean success = bookDAO.removeObject(book);
         JSONObject jsonReturn = new JSONObject();
         jsonReturn.put("success", success);
         return jsonReturn;
-
 
     }
 

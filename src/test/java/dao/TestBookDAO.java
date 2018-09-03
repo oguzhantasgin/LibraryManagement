@@ -39,16 +39,16 @@ public class TestBookDAO {
     @Autowired
     private PublisherDAO publisherDAO;
 
-    @Ignore
+    @Test
     public void testLoadBooks() {
         List<Book> bookList = bookDAO.loadBooks();
-        Assert.assertEquals(0, bookList.size());
+        Assert.assertEquals(1, bookList.size());
 
     }
 
-    @Test
+    @Ignore
     @Transactional
-    @Rollback(false)
+    @Rollback(true)
     public void testAddBook() throws Exception {
 
         //Set test publisher and variables

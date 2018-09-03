@@ -2,8 +2,8 @@ Ext.define(appName + '.view.book.BookForm', {
     extend: 'Ext.form.Panel',
     id: 'myform',
     alias: 'widget.bookform',
-    title: ' Library Management Form',
-    glyph: 'xE87C@Material Icons',
+    title: ' Book Management',
+    glyph: 'xE54B@Material Icons',
     autoScroll: true,
     monitorValid: true,
     defaultType: 'textfield',
@@ -54,7 +54,7 @@ Ext.define(appName + '.view.book.BookForm', {
                 allowblank: false
             }
 
-            ];
+        ];
 
 
         this.btnSave = Ext.create('Ext.Button', {

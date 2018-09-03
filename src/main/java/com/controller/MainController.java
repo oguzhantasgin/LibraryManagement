@@ -61,7 +61,7 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/deleteBooks.ajax")
+    @RequestMapping(value = "/deleteBook.ajax")
     public @ResponseBody
     String deleteBook(@RequestParam Long bookId, HttpServletRequest request, HttpServletResponse response) throws ParseException {
 

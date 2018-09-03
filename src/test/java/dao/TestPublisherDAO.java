@@ -27,15 +27,23 @@ public class TestPublisherDAO {
     @Autowired
     private PublisherDAO publisherDAO;
 
-    @Ignore
+    @Test
     public void testLoadPublishers() {
         List<Publisher> publisherList = publisherDAO.loadPublishers();
+
+        for (int i = 0; i < publisherList.size(); i++) {
+
+            System.out.println(publisherList.get(i));
+
+        }
+
+
         Assert.assertTrue(publisherList.size() > 0);
 
     }
 
 
-    @Test
+    @Ignore
     @Transactional
     @Rollback(true)
     public void testAddPublisher() {
@@ -52,7 +60,7 @@ public class TestPublisherDAO {
         List<Publisher> publishersAfter = publisherDAO.loadPublishers();
         int afterSize = publishersAfter.size();
 
-        Assert.assertEquals(1, beforeSize-afterSize);
+        Assert.assertEquals(1, beforeSize - afterSize);
 
 
     }
@@ -61,10 +69,8 @@ public class TestPublisherDAO {
     @Ignore
     public void testLoadPublisherById() {
 
-
         Publisher publisher = publisherDAO.loadPublisherById(1L);
         Assert.assertNotNull(publisher);
-
 
     }
 

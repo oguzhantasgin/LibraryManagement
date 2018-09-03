@@ -19,10 +19,10 @@ public class Publisher implements Serializable {
 
     @Column(name = "publisher_address")
     private String publisherAddress;
-
-    @OneToMany( targetEntity = Book.class, mappedBy = "publisher" ,
+/*
+    @OneToMany(targetEntity = Book.class,mappedBy = "publisher",
             cascade = CascadeType.ALL)
-    private List<Book> books;
+    private List<Book> books;*/
 
 
     //GETTERS AND SETTERS
@@ -52,11 +52,11 @@ public class Publisher implements Serializable {
         this.publisherAddress = publisherAddress;
     }
 
-    public List<Book> getBooks() {
+   /* public List<Book> getBooks() {
         return books;
     }
 
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
+    }*/
 }
