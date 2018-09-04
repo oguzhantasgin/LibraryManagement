@@ -1,12 +1,20 @@
+
 package com.config;
 
-import com.model.Book;
-import com.model.Publisher;
+
+import javax.sql.DataSource;
+
+import com.model.library.Book;
+import com.model.library.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
@@ -22,9 +30,12 @@ public class AppConfig {
     @Autowired
     private Environment env;
 
+
+
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
+        factoryBean.setDataSource(dataSource());
         factoryBean.setHibernateProperties(putProperties(new Properties()));
         factoryBean.setAnnotatedClasses(Book.class, Publisher.class);
         return factoryBean;
@@ -38,8 +49,18 @@ public class AppConfig {
     }
 
     @Bean
-    public Properties putProperties(Properties properties)
-    {
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(env.getRequiredProperty("jdbc.driverClassName"));
+        dataSource.setUrl(env.getRequiredProperty("jdbc.url"));
+        dataSource.setUsername(env.getRequiredProperty("jdbc.username"));
+        dataSource.setPassword(env.getRequiredProperty("jdbc.password"));
+        return dataSource;
+    }
+
+
+    @Bean
+    public Properties putProperties(Properties properties) {
         // Setting JDBC properties
         properties.put(DRIVER, env.getProperty("mysql.driver"));
         properties.put(URL, env.getProperty("mysql.url"));
@@ -62,7 +83,6 @@ public class AppConfig {
         properties.put(C3P0_IDLE_TEST_PERIOD, env.getProperty("hibernate.c3p0.idle_test_period")); // seconds
         properties.put(C3P0_CONFIG_PREFIX + ".acquireRetryAttempts", env.getProperty("hibernate.c3p0.acquireRetryAttempts"));
         properties.put(C3P0_CONFIG_PREFIX + ".acquireRetryDelay", env.getProperty("hibernate.c3p0.acquireRetryDelay")); // milliseconds
-
 
 
         return properties;

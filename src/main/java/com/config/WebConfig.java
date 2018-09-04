@@ -1,6 +1,8 @@
 package com.config;
 
 import com.interceptor.ControllerInterceptor;
+import com.util.RoleToUserProfileConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +33,11 @@ import java.util.Locale;
 @ComponentScan(basePackages = {"com"})
 public class WebConfig implements WebMvcConfigurer {
 
+
+    @Autowired
+    RoleToUserProfileConverter roleToUserProfileConverter;
+
+
     //Used methods
 
     @Override
@@ -56,6 +63,11 @@ public class WebConfig implements WebMvcConfigurer {
                 "plain", Charset.forName("UTF-8"))));
         list.add(stringConverter);
 
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry formatterRegistry) {
+        formatterRegistry.addConverter(roleToUserProfileConverter);
     }
 
     //Beans
@@ -117,16 +129,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     }
 
-
-    @Override
-    public void addFormatters(FormatterRegistry formatterRegistry) {
-
-    }
-
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
-
+        resourceHandlerRegistry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
 
     @Override

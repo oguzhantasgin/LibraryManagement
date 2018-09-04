@@ -2,10 +2,9 @@ package com.service;
 
 
 import com.dao.PublisherDAO;
-import com.model.Publisher;
+import com.model.library.Publisher;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

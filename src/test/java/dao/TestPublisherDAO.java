@@ -4,10 +4,9 @@ import com.config.AppConfig;
 import com.config.WebAppInitializer;
 import com.config.WebConfig;
 import com.dao.PublisherDAO;
-import com.model.Publisher;
+import com.model.library.Publisher;
 import org.junit.Assert;
 import org.junit.Ignore;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -27,7 +26,7 @@ public class TestPublisherDAO {
     @Autowired
     private PublisherDAO publisherDAO;
 
-    @Test
+    @Ignore
     public void testLoadPublishers() {
         List<Publisher> publisherList = publisherDAO.loadPublishers();
 
@@ -41,7 +40,6 @@ public class TestPublisherDAO {
         Assert.assertTrue(publisherList.size() > 0);
 
     }
-
 
     @Ignore
     @Transactional
@@ -65,7 +63,6 @@ public class TestPublisherDAO {
 
     }
 
-
     @Ignore
     public void testLoadPublisherById() {
 
@@ -73,7 +70,6 @@ public class TestPublisherDAO {
         Assert.assertNotNull(publisher);
 
     }
-
 
     @Ignore
     @Transactional

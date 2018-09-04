@@ -3,10 +3,10 @@ package com.service;
 
 import com.dao.BookDAO;
 import com.dao.PublisherDAO;
-import com.model.Book;
+import com.model.library.Book;
 
 
-import com.model.Publisher;
+import com.model.library.Publisher;
 import org.springframework.transaction.annotation.Propagation;
 import com.util.DateJSONValueProcessor;
 
@@ -45,7 +45,6 @@ public class BookService {
 
             Book book = bookList.get(i);
             JSONObject json = jsonArray.getJSONObject(i);
-
             Publisher publisher = book.getPublisher();
 
             if (publisher != null) {

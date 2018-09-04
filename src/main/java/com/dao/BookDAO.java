@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.model.Book;
+import com.model.library.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
