@@ -3,24 +3,88 @@ CREATE DATABASE IF NOT EXISTS Library;
 USE Library;
 
 CREATE TABLE IF NOT EXISTS publishing_house_table (
-  `publisher_id` INTEGER AUTO_INCREMENT NOT NULL,
-  `publisher_name` NVARCHAR(255) ,
-  `publisher_address` NVARCHAR(255) ,
-  `publisher_phone` INTEGER,
+  `publisher_id`      INTEGER AUTO_INCREMENT NOT NULL,
+  `publisher_name`    NVARCHAR(255),
+  `publisher_address` NVARCHAR(255),
+  `publisher_phone`   INTEGER,
   PRIMARY KEY (`publisher_id`)
 );
 
 
 CREATE TABLE IF NOT EXISTS book_table (
-  `book_id` INTEGER AUTO_INCREMENT NOT NULL,
-  `book_number` INTEGER ,
-  `book_author` NVARCHAR(255) ,
-  `book_name` NVARCHAR(255) ,
-  `book_year`DATE NULL,
+  `book_id`      INTEGER AUTO_INCREMENT NOT NULL,
+  `book_number`  INTEGER,
+  `book_author`  NVARCHAR(255),
+  `book_name`    NVARCHAR(255),
+  `book_year`    DATE                   NOT NULL,
   `publisher_id` INTEGER,
 
   PRIMARY KEY (`book_id`),
-  FOREIGN KEY (publisher_id ) REFERENCES publishing_house_table(publisher_id)
+  FOREIGN KEY (publisher_id) REFERENCES publishing_house_table (publisher_id)
 
+);
+
+
+CREATE TABLE app_user (
+  id         BIGINT       NOT NULL AUTO_INCREMENT,
+  sso_id     VARCHAR(30)  NOT NULL,
+  password   VARCHAR(100) NOT NULL,
+  first_name VARCHAR(30)  NOT NULL,
+  last_name  VARCHAR(30)  NOT NULL,
+  email      VARCHAR(30)  NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (sso_id)
+);
+
+
+CREATE TABLE user_profile (
+  id   BIGINT      NOT NULL AUTO_INCREMENT,
+  type VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (type)
+);
+
+
+CREATE TABLE app_user_user_profile (
+  user_id         BIGINT NOT NULL,
+  user_profile_id BIGINT NOT NULL,
+  PRIMARY KEY (user_id, user_profile_id),
+  CONSTRAINT FK_APP_USER FOREIGN KEY (user_id) REFERENCES APP_USER (id),
+  CONSTRAINT FK_USER_PROFILE FOREIGN KEY (user_profile_id) REFERENCES USER_PROFILE (id)
+);
+
+
+INSERT INTO user_profile (type)
+VALUES ('USER');
+
+INSERT INTO user_profile (type)
+VALUES ('ADMIN');
+
+INSERT INTO user_profile (type)
+VALUES ('DBA');
+
+
+INSERT INTO APP_USER (sso_id, password, first_name, last_name, email)
+VALUES ('oguzhan',
+        '$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZYChRm',
+        'Oguzhan',
+        'Taşgın',
+        'oguzhantasgin@xyz.com');
+
+
+INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
+SELECT user.id, profile.id
+FROM app_user user,
+     user_profile profile
+where user.sso_id = 'oguzhan'
+  and profile.type = 'ADMIN';
+
+
+CREATE TABLE persistent_logins (
+  username  VARCHAR(64) NOT NULL,
+  series    VARCHAR(64) NOT NULL,
+  token     VARCHAR(64) NOT NULL,
+  last_used TIMESTAMP   NOT NULL,
+  PRIMARY KEY (series)
 );
 
