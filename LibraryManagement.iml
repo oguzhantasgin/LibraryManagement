@@ -14,10 +14,14 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
+        <fileset id="initializer com.config.AppInitializer servlet context" name="MVC dispatcher initializer servlet context" removed="true" />
+        <fileset id="initializer com.config.AppInitializer root context" name="MVC dispatcher initializer root context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/java/com/config/AppConfig.java</file>
+        </fileset>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/com/config/AppConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/config/WebConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/config/SecurityConfiguration.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/config/WebConfig.java</file>
         </fileset>
       </configuration>
     </facet>

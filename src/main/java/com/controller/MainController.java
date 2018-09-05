@@ -19,7 +19,7 @@ import java.text.ParseException;
 import java.util.Locale;
 
 @Controller
-@RequestMapping(value = "/*")
+@RequestMapping(value = "/admin")
 public class MainController {
 
     @Autowired
