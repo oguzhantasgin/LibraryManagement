@@ -13,8 +13,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
@@ -33,7 +34,7 @@ public class AppConfig {
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setDataSource(dataSource());
+       /* factoryBean.setDataSource(dataSource());*/
         factoryBean.setHibernateProperties(putProperties(new Properties()));
         factoryBean.setAnnotatedClasses(Book.class, Publisher.class);
         return factoryBean;
@@ -46,6 +47,7 @@ public class AppConfig {
         return transactionManager;
     }
 
+/*
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -54,7 +56,7 @@ public class AppConfig {
         dataSource.setUsername(env.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(env.getRequiredProperty("jdbc.password"));
         return dataSource;
-    }
+    }*/
 
 
     @Bean
